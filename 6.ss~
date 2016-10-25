@@ -1,0 +1,32 @@
+;Name: Fangyuan Wang
+;Assignment 6
+
+;#1
+(define curry2
+	[lambda (p)
+		(lambda (x)
+			(lambda (y)
+				(p x y)))])
+
+;#2
+(define curried-compose
+	[lambda (p)
+		(lambda (x)
+			(lambda (y)
+				(p (x y))))])
+
+;#3
+(define compose
+	[lambda L
+		(lambda (x)
+			(if [null? (cdr L)]
+				[(car L) x]
+				[(car L) ((apply compose (cdr L)) x)]))])
+
+;#4
+(define make-list-c
+	[lambda (n)
+		(lambda (ls)
+			(if [zero? n]
+				'()
+				(cons ls ((make-list-c (- n 1)) ls))))])

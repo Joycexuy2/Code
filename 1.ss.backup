@@ -1,0 +1,63 @@
+;Name: Fangyuan Wang
+;Assignment 1
+
+;#1
+(define Fahrenheit->Celsius 
+	(lambda (n) 
+		[/ (* [- n 32] 5) 9]))
+
+;#2
+(define interval-contains?
+	(lambda (x y)
+		(and (>= y [car x]) (<= y [car (cdr x)]))))
+
+;#3
+(define interval-intersects? 
+	(lambda (x y)
+		(if [<= (list-ref x 0) (list-ref y 0)]
+			 [<= (list-ref y 0) (list-ref x 1)]
+			 [<= (list-ref x 0) (list-ref y 1)]
+				)))
+
+
+;#4 Helper Method1
+(define get-max
+	[lambda (x y)
+		(if [<= x y] y x)])
+
+;#4 Helper Method2;
+(define get-min
+	[lambda (x y)
+		(if [<= x y] x y)])
+
+;#4;
+(define interval-union 
+	[lambda (x y)
+		(if (interval-intersects? x y)
+			[list 
+				(cons [get-min (car x) (car y)] 
+					(list (get-max (cadr x) (cadr y))))]
+			[list x y] )])
+
+;#5
+(define divisible-by-7? 
+	[lambda (x)
+		(equal? [modulo x 7] 0)])
+
+;#6
+(define ends-with-7? 
+	[lambda (x)
+		(equal? 7 [modulo x 10])])
+
+;#7
+(define 1st
+	[lambda (x)
+		(car x)])
+
+(define 2nd 
+	[lambda (x)
+		(cadr x)])
+
+(define 3rd 
+	[lambda (x)
+		(caddr x)])

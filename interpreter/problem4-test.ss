@@ -1,0 +1,5 @@
+ (eval-one-exp '((lambda (x) (while (x < 10)
+                                      (if (eq? x 5)
+                                          (continue))
+                                      (set! x (+ 1 x))) 
+			    5)))
